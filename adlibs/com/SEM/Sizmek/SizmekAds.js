@@ -45,5 +45,46 @@ var SizmekAds={
 		'&Quantity='+$quantity;
 		document.body.appendChild(elem);  
 		EventBus.dispatch(AdPlatformsController.SIZMEK_SALES_DISPATCHED_EVENT);	
+	},
+	getSizmekCounterObject:function($id,$landing,$condition,$origin){
+		return {
+			a_type:"MediaMind", 
+			byOrigin:false, 
+			origin:$origin,
+			dispatchAt:$condition, 
+			landing:$landing,
+			config:{
+				id:$id	
+			}
+		};
+	},
+	getSizmekRemarketingObject:function($tid,$tval,$landing,$condition,$origin){
+		return {
+			a_type:"MediaMindRemarketing", 
+			byOrigin:false, 
+			origin:$origin,
+			dispatchAt:$condition, 
+			landing:$landing,
+			config:{
+				tid:$tid,
+				tval:$val,	
+			}
+		};
+	},
+	getSizmekSalesObject:function($id,$order_id,$product_id,$product_info,$quantity,$landing,$condition,$origin){
+		return {
+			a_type:"MediaMindSales", 
+			byOrigin:false, 
+			origin:$origin,
+			dispatchAt:$condition, 
+			landing:$landing,
+			config:{
+				id:$id,
+				orderID:$order_id,
+				productID:$product_id,
+				productInfo:$product_info,
+				quantity:$quantity
+			}
+		};
 	}
 };

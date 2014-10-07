@@ -1,3 +1,8 @@
+/** 
+  * @desc This file definess all the functionality to dispatch the Facebook tags
+  * @author Michael Avilán michael.avilan@gmail.com
+*/
+
 var FacebookAds={
 	init:function(){
 		//Constructor

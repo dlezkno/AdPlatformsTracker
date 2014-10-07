@@ -9,14 +9,14 @@ var AdPlatformsTracker={
 	a_config_ob:{
 		libs:[
 			'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
-			'com/config.js',
+			'com/Config.js',
 			'com/Utils/CSVReader.js',
 			'com/Control/AdPlatformsController.js',
 			'com/SEM/Google/GoogleAds.js',
 			'com/SEM/Facebook/FacebookAds.js',
 			'com/SEM/Sizmek/SizmekAds.js',
 			'com/SEM/Yahoo/YahooAds.js',
-			'com/SEM/Yahoo/SoicosAds.js',
+			'com/SEM/Soicos/SoicosAds.js',
 			'com/Analytics/Adobe/ReportsAndAnalytics.js',
 			'com/Analytics/Google/GAnalytics.js',
 			'EventBus/EventBus.js',
@@ -36,4 +36,3 @@ var AdPlatformsTracker={
 		}
 	}
 };
-AdPlatformsTracker.init();

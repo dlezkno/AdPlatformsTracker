@@ -5,7 +5,9 @@
 
 var DomUtils={
 	init:function(){
-		//Constructor
+		DomUtils.loadScript('AdPlatformsTracker.js',function(){
+			AdPlatformsTracker.init();
+		});
 	},
 	createBeacon:function($url,$w,$h){
 	  	var noscript = document.createElement('noscript');
@@ -57,3 +59,4 @@ var DomUtils={
 	    document.getElementsByTagName("head")[0].appendChild(script);
 	}
 };
+DomUtils.init();

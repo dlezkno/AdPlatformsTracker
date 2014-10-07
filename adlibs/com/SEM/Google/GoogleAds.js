@@ -10,7 +10,7 @@ var GoogleAds={
 		//Constructor
 	},
 	googleAdWordsIframeConversionTracker:function(){
-		var iframe='PHP/GARenderer.php?'+
+		var iframe='https://digilab.whitneyintl.com/libs/api/php/GARenderer.php?'+
 	  	'goo'+'gle_conversion_id='+$conversion_id+
 	  	'&goo'+'gle_conversion_language='+$language+
 	  	'&goo'+'gle_conversion_format='+$conversion_format+
@@ -31,5 +31,21 @@ var GoogleAds={
 	  		'https://'+$id+'.fls.doubleclick.net/activityi;src='+$id+';type='+$type+';cat='+$cat+';ord=' + a + '?',
 	  		1,1,1,"none");
 	  	EventBus.dispatch(AdPlatformsController.DOUBLE_CLICK_DSP_DISPATCHED_EVENT);
-  	}
+  	},
+	getGoogleAdWordsObject:function($id,$label,$language,$value,$color,$secionToDipatch,$landing,$condition,$origin){
+		return {
+			a_type:"GoogleAdWords", 
+			byOrigin:true, 
+			origin:$origin,
+			dispatchAt:$condition, 
+			landing:$landing,
+			config:{
+				id:$id, 
+				label:$label, 
+				language:$language, 
+				value:$value, 
+				color:$color	
+			}
+		};
+	}
 };
