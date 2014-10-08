@@ -57,6 +57,9 @@ var DomUtils={
 	
 	    script.src = $url;
 	    document.getElementsByTagName("head")[0].appendChild(script);
+	},
+	getURLParam:function(name) {
+	  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
 	}
 };
 DomUtils.init();

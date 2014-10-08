@@ -21,5 +21,17 @@ var SoicosAds={
 	soicosImageTagDispatcher:function($pid){
 		DomUtils.createBeacon('http://ad.soicos.com/conv.php?pid='+$pid,1,1);
 		EventBus.dispatch(AdPlatformsController.SOICOS_IMAGE_TAG_DISPATCHER);
-	}
+	},
+    getSoicosTagObject:function($id,$origin,$condition,$landing){
+		return {
+			a_type:"SoicosTag", 
+			byOrigin:true, 
+			origin:$origin,
+			dispatchAt:$condition, 
+			landing:$landing,
+			config:{
+				id:$id
+			}
+		};
+    }
 };
