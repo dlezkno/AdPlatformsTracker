@@ -12,7 +12,7 @@ var YahooAds={
 	},
     getYahooTagObject:function($id,$origin,$condition,$landing){
 		return {
-			a_type:"SoicosTag", 
+			a_type:"YahooTag", 
 			byOrigin:true, 
 			origin:$origin,
 			dispatchAt:$condition, 

@@ -9,7 +9,7 @@ var GoogleAds={
 	init:function(){
 		//Constructor
 	},
-	googleAdWordsIframeConversionTracker:function(){
+	googleAdWordsIframeConversionTracker:function($conversion_id,$language,$conversion_format,$color,$label_id){
 		var iframe='https://digilab.whitneyintl.com/libs/api/php/GARenderer.php?'+
 	  	'goo'+'gle_conversion_id='+$conversion_id+
 	  	'&goo'+'gle_conversion_language='+$language+
@@ -32,7 +32,7 @@ var GoogleAds={
 	  		1,1,1,"none");
 	  	EventBus.dispatch(AdPlatformsController.DOUBLE_CLICK_DSP_DISPATCHED_EVENT);
   	},
-	getGoogleAdWordsObject:function($id,$label,$language,$value,$color,$secionToDipatch,$landing,$condition,$origin){
+	getGoogleAdWordsObject:function($id,$label,$language,$value,$color,$format,$landing,$condition,$origin){
 		return {
 			a_type:"GoogleAdWords", 
 			byOrigin:true, 
@@ -44,7 +44,35 @@ var GoogleAds={
 				label:$label, 
 				language:$language, 
 				value:$value, 
-				color:$color	
+				color:$color,
+				format:$format	
+			}
+		};
+	},
+	getClickTagObject:function($src,$cat,$landing,$condition,$origin){
+		return {
+			a_type:"GoogleClickTag", 
+			byOrigin:true, 
+			origin:$origin,
+			dispatchAt:$condition, 
+			landing:$landing,
+			config:{
+				src:$src,
+				cat:$cat
+			}
+		};
+	},
+	getDoubleClickagObject:function($id,$type,$cat,$landing,$condition,$origin){
+		return {
+			a_type:"DoubleClick", 
+			byOrigin:true, 
+			origin:$origin,
+			dispatchAt:$condition, 
+			landing:$landing,
+			config:{
+				id:$id,
+				type:$type,
+				cat:$cat
 			}
 		};
 	}

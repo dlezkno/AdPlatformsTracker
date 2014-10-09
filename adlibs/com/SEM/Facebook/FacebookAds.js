@@ -53,7 +53,7 @@ var FacebookAds={
   },
   getFacebookAudienceTagObject:function($id,$origin,$condition,$landing){
 		return {
-			a_type:"FacebookClassicTag", 
+			a_type:"FacebookAudienceTag", 
 			byOrigin:true, 
 			origin:$origin,
 			dispatchAt:$condition, 
