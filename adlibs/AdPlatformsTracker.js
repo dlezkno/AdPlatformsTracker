@@ -20,6 +20,8 @@ var AdPlatformsTracker={
 			'com/Analytics/Adobe/ReportsAndAnalytics.js',
 			'com/Analytics/Google/GAnalytics.js',
 			'EventBus/EventBus.js',
+			'com/Models/TagsModel.js',
+			'com/Engine/TaggingEngine.js',
 			'Main.js'
 		],
 		libsloaded:0

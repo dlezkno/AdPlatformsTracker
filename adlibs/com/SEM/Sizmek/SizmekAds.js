@@ -49,7 +49,7 @@ var SizmekAds={
 	getSizmekCounterObject:function($id,$landing,$condition,$origin){
 		return {
 			a_type:"MediaMind", 
-			byOrigin:false, 
+			byOrigin:true, 
 			origin:$origin,
 			dispatchAt:$condition, 
 			landing:$landing,
@@ -67,14 +67,14 @@ var SizmekAds={
 			landing:$landing,
 			config:{
 				tid:$tid,
-				tval:$val,	
+				tval:$val	
 			}
 		};
 	},
 	getSizmekSalesObject:function($id,$order_id,$product_id,$product_info,$quantity,$landing,$condition,$origin){
 		return {
 			a_type:"MediaMindSales", 
-			byOrigin:false, 
+			byOrigin:true, 
 			origin:$origin,
 			dispatchAt:$condition, 
 			landing:$landing,

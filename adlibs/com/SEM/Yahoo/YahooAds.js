@@ -8,7 +8,7 @@ var YahooAds={
 		//Constructor
 	},
 	yahooConversionTagDispatcher:function($pixelId){
-		DomUtils.createBeacSon('http://ads.yahoo.com/pixel?id='+$pixelId+'&t=2',1,1);
+		DomUtils.createBeacon('http://ads.yahoo.com/pixel?id='+$pixelId+'&t=2',1,1);
 	},
     getYahooTagObject:function($id,$origin,$condition,$landing){
 		return {

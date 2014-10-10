@@ -25,7 +25,7 @@ var GoogleAds={
 		EventBus.dispatch(AdPlatformsController.DOUBLE_CLICK_DISPATCHED_EVENT);
 	},
 	doubleClickDSPTagDispatcher:function($id,$cat,$type){
-	  	var axel = Math.random() + "";
+		var axel = Math.random() + "";
 		var a = axel * 10000000000000;
 	  	DomUtils.createIframe(
 	  		'https://'+$id+'.fls.doubleclick.net/activityi;src='+$id+';type='+$type+';cat='+$cat+';ord=' + a + '?',
@@ -49,9 +49,9 @@ var GoogleAds={
 			}
 		};
 	},
-	getClickTagObject:function($src,$cat,$landing,$condition,$origin){
+	getDoubleClickTagObject:function($src,$cat,$landing,$condition,$origin){
 		return {
-			a_type:"GoogleClickTag", 
+			a_type:"DoubleClick", 
 			byOrigin:true, 
 			origin:$origin,
 			dispatchAt:$condition, 
@@ -62,17 +62,17 @@ var GoogleAds={
 			}
 		};
 	},
-	getDoubleClickagObject:function($id,$type,$cat,$landing,$condition,$origin){
+	getDoubleClickDSPTagObject:function($type,$src,$cat,$landing,$condition,$origin){
 		return {
-			a_type:"DoubleClick", 
+			a_type:"DoubleClickDSP", 
 			byOrigin:true, 
 			origin:$origin,
 			dispatchAt:$condition, 
 			landing:$landing,
 			config:{
-				id:$id,
 				type:$type,
-				cat:$cat
+				cat:$cat,
+				id:$src
 			}
 		};
 	}

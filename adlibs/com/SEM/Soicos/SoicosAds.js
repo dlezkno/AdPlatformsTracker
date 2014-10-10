@@ -15,7 +15,7 @@ var SoicosAds={
 		SoicosAds.soicosCallback);
 	},
 	soicosCallback:function(){
-		soicos.registerConversion({ pid :MeasurementPlatformsTracker.a_soicos_pid, data : '' });
+		soicos.registerConversion({ pid :SoicosAds.a_soicos_pid, data : '' });
 		EventBus.dispatch(AdPlatformsController.SOICOS_TAG_DISPATCHER);
 	},
 	soicosImageTagDispatcher:function($pid){
