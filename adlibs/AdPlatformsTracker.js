@@ -21,6 +21,7 @@ var AdPlatformsTracker={
 			'com/Analytics/Google/GAnalytics.js',
 			'EventBus/EventBus.js',
 			'com/Models/TagsModel.js',
+			'com/Models/HistoryTracker.js',
 			'com/Engine/TaggingEngine.js',
 			'Main.js'
 		],

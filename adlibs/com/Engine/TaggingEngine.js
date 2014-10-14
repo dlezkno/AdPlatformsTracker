@@ -3,31 +3,46 @@
   * @author Michael Avilán michael.avilan@gmail.com
 */
 var TaggingEngine={
+	
+	a_config_engine:{},
+	
 	init:function(){
 		//Constructor
 	},
+	loadByRemoteScript:function($url,$origin,$condition,$landing){
+		TaggingEngine.a_config_engine={
+			url:$url,
+			origin:$origin,
+			condition:$condition,
+			landing:$landing
+		};
+		DomUtils.loadScript($url,TaggingEngine.remoteFileLoaded);
+	},
+	remoteFileLoaded:function(){
+		TagsModel.a_tags=a_remote_tags;
+		TaggingEngine.dispatchTagsDelegate(
+			TaggingEngine.a_config_engine.origin,
+			TaggingEngine.a_config_engine.condition,
+			TaggingEngine.a_config_engine.landing);
+	},
 	dispatchTagsDelegate:function($origin,$condition,$landing){
-		//console.log(1);
 		for(var i=0;i<TagsModel.a_tags.length;i++){
-			//console.log(2+":"+$landing+":"+TagsModel.a_tags[i].landing);
 			if(TagsModel.a_tags[i].landing==$landing){
-				//console.log(3);
 				if(TagsModel.a_tags[i].dispatchAt==$condition){
-					//console.log(4+":"+TagsModel.a_tags[i].byOrigin);
 					if(TagsModel.a_tags[i].byOrigin==true){
-						//console.log(5);
 						if(TagsModel.a_tags[i].origin==$origin){
-							//console.log(6);
 							TaggingEngine.dispatchTags(TagsModel.a_tags[i]);
 						}
 					}	
 				}	
 			}
-		}		
+		}	
+		
+		HistoryTracker.printHistory();
 	},
 	dispatchTags:function($tag){
 		var type=$tag.a_type;
-		console.log(type);
+		HistoryTracker.addTagToHistory($tag);
 		switch(type){
 			case "GoogleAdWords":
 			GoogleAds.googleAdWordsIframeConversionTracker($tag.config.id,$tag.config.language,$tag.config.format,$tag.config.color,$tag.config.label);
