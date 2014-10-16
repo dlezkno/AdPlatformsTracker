@@ -5,9 +5,27 @@
 var TaggingEngine={
 	
 	a_config_engine:{},
+	a_GA_centinela:false,
+	a_RA_centinela:false,
 	
 	init:function(){
 		//Constructor
+	},
+	activateDynamicEventsTagging:function($GA,$RA){
+		TaggingEngine.a_GA_centinela=$GA;
+		TaggingEngine.a_RA_centinela=$RA;
+		var items = document.getElementsByTagName("a");
+		for (var i = 0; i < items.length; i++) {
+			var item = items[i];
+		    if(item.innerText.length>0){	    	
+		    	item.addEventListener("click", TaggingEngine.clickHandler);
+		    }
+		}
+	},
+	clickHandler:function(e){
+		if(TaggingEngine.a_GA_centinela==true){
+			GAnalytics.dispatchEvent(String(document.title).toUpperCase(),'CLICK',e.srcElement.innerText);	
+		}
 	},
 	loadByRemoteScript:function($url,$origin,$condition,$landing){
 		TaggingEngine.a_config_engine={

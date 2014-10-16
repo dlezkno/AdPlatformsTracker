@@ -28,6 +28,9 @@
 				TaggingEngine.loadByRemoteScript('data/remoteExample.js','local','uta','prueba');
 				break;
 			}
+			
+			GAnalytics.installUniversalAnalytics('UA-34271106-1');
+			GAnalytics.dispatchEvent('Development','Test','Google Events Dispatching',0);
 		}
 		</script>
 	</body>
