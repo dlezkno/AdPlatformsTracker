@@ -4,23 +4,32 @@
 */
 var Config={
 		
-	a_main_parser_path:"",
-	a_asp_path:"",
-	a_php_path:"",
-	a_cfs_path:"",
+	a_main_parser_path:'',
+	a_asp_path:'',
+	a_php_path:'',
+	a_cfs_path:'',
+	a_ck_name:'adlibs_ck',
+	a_geo_data:{
+		csv_sources:[
+			'com/Utils/Geo/csv/2014-1-SubdivisionCodes.csv',
+			'com/Utils/Geo/csv/2014-1-UNLOCODE-CodeListPart1.csv',
+			'com/Utils/Geo/csv/2014-1-UNLOCODE-CodeListPart2.csv',
+			'com/Utils/Geo/csv/2014-1-UNLOCODE-CodeListPart3.csv'
+		]
+	},
 	
 	
 	init:function(){
 	},
 	setParserPath:function($case){
 		switch($case){
-			case "php":
+			case 'php':
 			Config.a_main_parser_path=a_php_path;
 			break;
-			case "asp":
+			case 'asp':
 			Config.a_main_parser_path=a_asp_path;
 			break;
-			case "cf":
+			case 'cf':
 			Config.a_main_parser_path=a_cfs_path;
 			ldfusion_path;
 			break;

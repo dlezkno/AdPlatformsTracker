@@ -10,7 +10,7 @@ var YahooAds={
 	yahooConversionTagDispatcher:function($pixelId){
 		DomUtils.createBeacon('http://ads.yahoo.com/pixel?id='+$pixelId+'&t=2',1,1);
 	},
-    getYahooTagObject:function($id,$origin,$condition,$landing){
+    getYahooTagObject:function($id,$landing,$condition,$origin){
 		return {
 			a_type:"YahooTag", 
 			byOrigin:true, 

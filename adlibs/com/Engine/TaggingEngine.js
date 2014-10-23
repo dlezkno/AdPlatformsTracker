@@ -4,7 +4,7 @@
 */
 var TaggingEngine={
 	
-	a_config_engine:{},
+	a_config_engine:{url:'',origin:'',condition:'',landing:''},
 	a_GA_centinela:false,
 	a_RA_centinela:false,
 	
@@ -27,13 +27,16 @@ var TaggingEngine={
 			GAnalytics.dispatchEvent(String(document.title).toUpperCase(),'CLICK',e.srcElement.innerText);	
 		}
 	},
-	loadByRemoteScript:function($url,$origin,$condition,$landing){
-		TaggingEngine.a_config_engine={
-			url:$url,
-			origin:$origin,
-			condition:$condition,
-			landing:$landing
-		};
+	loadByRemoteScript:function($url,$landing,$condition,$origin){
+		if($url!=TaggingEngine.a_config_engine.url){
+			TaggingEngine.a_config_engine={
+				url:$url,
+				origin:$origin,
+				condition:$condition,
+				landing:$landing
+			};
+		}
+		
 		DomUtils.loadScript($url,TaggingEngine.remoteFileLoaded);
 	},
 	remoteFileLoaded:function(){
@@ -55,7 +58,6 @@ var TaggingEngine={
 				}	
 			}
 		}	
-		
 		HistoryTracker.printHistory();
 	},
 	dispatchTags:function($tag){

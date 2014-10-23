@@ -1,17 +1,18 @@
 var CSVReader = {
 	
-	a_tags_definition:[],
+	a_data:[],
 	
 	init:function(){
 		
 	},
 	loadCSV:function($path,$callback){
-		console.log($path);
+		$=jQuery;
+
 		$.ajax({
 		   	url: $path,
 		    type: 'get',
 		    success: function (_data) {
-		    	CSVReader.a_tags_definition=(CSVReader.CSVToArray(_data,","));
+		    	CSVReader.a_data=(CSVReader.CSVToArray(_data,","));
 		    	$callback();
 		    },
 		    error: function (xhr, ajaxOptions, thrownError) {

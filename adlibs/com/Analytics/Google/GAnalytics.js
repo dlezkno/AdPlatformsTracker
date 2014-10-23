@@ -1,3 +1,7 @@
+/** 
+  * @desc This file contains the Google Universal Analytics Tracking Event Methods
+  * @author Michael Avilán michael.avilan@gmail.com
+*/
 var GAnalytics={
 	
 	a_centinela:false,
@@ -6,6 +10,8 @@ var GAnalytics={
 		//Constructor
 	},
 	installUniversalAnalytics:function($propertyID){
+		
+	  GAnalytics.deactivateClassicTracking($propertyID);
 		
 	  (function(i,s,o,g,r,a,m){
 	  	i['GoogleAnalyticsObject']=r;
@@ -22,15 +28,26 @@ var GAnalytics={
 	  ga('send', 'pageview');
 
 	},
+	deactivateClassicTracking:function(){
+		try{
+			_gaq=null;	
+		}catch(e){
+		}finally{
+		}
+	},
 	dispatchEvent:function($category,$action,$label,$value){
-		ga('send', {
+		var data={
 		  'hitType': 'event',          
 		  'eventCategory':$category,
 		  'eventAction': $action,
 		  'eventLabel': $label,
 		  'eventValue': $value
-		});
+		};
+		ga('send', data);
+		
+		HistoryTracker.addEventToHistory(data);
 	},
+	
 	loadEcommercePlugin:function(){
 		if(GAnalytics.a_centinela==false){
 			ga('require', 'ec');	

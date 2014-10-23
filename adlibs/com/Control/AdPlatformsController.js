@@ -1,5 +1,5 @@
 /** 
-  * @desc This file definess all the events that rules the API
+  * @desc This file defines all the events that rules the API
   * @author Michael Avilán michael.avilan@gmail.com
 */
 
@@ -20,4 +20,6 @@ var AdPlatformsController={
 	//SOICOS
 	SOICOS_TAG_DISPATCHER:'SOICOS_TAG_DISPATCHER',
 	SOICOS_IMAGE_TAG_DISPATCHER:'SOICOS_IMAGE_TAG_DISPATCHER',
+	//ADOBE REPORTS AND ANALYTICS
+	ADOBE_REPORTS_ANALYTICS_LOADED:'ADOBE_REPORTS_ANALYTICS_LOADED'
 };

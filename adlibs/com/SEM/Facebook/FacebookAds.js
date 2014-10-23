@@ -37,7 +37,7 @@ var FacebookAds={
   	DomUtils.createBeacon('https://www.facebook.com/tr?id='+$addPixelId+'&amp;ev=NoScript',1,1);
   	EventBus.dispatch(AdPlatformsController.FACEBOOK_AUDIENCETAG_DISPATCHED_EVENT);
   },
-  getFacebookClassicTagObject:function($id,$paramValue,$currency,$origin,$condition,$landing){
+  getFacebookClassicTagObject:function($id,$paramValue,$currency,$landing,$condition,$origin){
 		return {
 			a_type:"FacebookClassicTag", 
 			byOrigin:true, 
@@ -51,7 +51,7 @@ var FacebookAds={
 			}
 		};
   },
-  getFacebookAudienceTagObject:function($id,$origin,$condition,$landing){
+  getFacebookAudienceTagObject:function($id,$landing,$condition,$origin){
 		return {
 			a_type:"FacebookAudienceTag", 
 			byOrigin:true, 

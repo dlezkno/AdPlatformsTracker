@@ -1,10 +1,12 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="com/Utils/DomUtils.js"></script>
 	</head>
-	<body onload="init(2);">
+	<body onload="init(3);">
 		<script>
+		
 		
 		function init($test){
 			
@@ -15,11 +17,11 @@
 					1,'prueba','uta','local'),
 					GoogleAds.getDoubleClickTagObject('4417368','oa3uw0R9','prueba','uta','local'),
 					GoogleAds.getDoubleClickDSPTagObject('invmedia','4362965','yLmRLwx1','prueba','uta','local'),
-					FacebookAds.getFacebookClassicTagObject('6015478192042','0.01','USD','local','uta','prueba'),
+					FacebookAds.getFacebookClassicTagObject('6015478192042','0.01','USD','prueba','uta','local'),
 					SizmekAds.getSizmekCounterObject('460834','prueba','uta','local'),
 					SizmekAds.getSizmekSalesObject('460873','sf76565','54654652','Product Info',1,'prueba','uta','local'),
-					SoicosAds.getSoicosTagObject('2519','local','uta','prueba'),
-					YahooAds.getYahooTagObject('2496586','local','uta','prueba')
+					SoicosAds.getSoicosTagObject('2519','prueba','uta','local'),
+					YahooAds.getYahooTagObject('2496586','prueba','uta','local')
 				];
 				
 				TaggingEngine.dispatchTagsDelegate('local','uta','prueba');
@@ -27,6 +29,8 @@
 				case 2:
 				TaggingEngine.loadByRemoteScript('data/remoteExample.js','local','uta','prueba');
 				break;
+				default:
+				console.log('The starter case does not exist');
 			}
 			
 			GAnalytics.installUniversalAnalytics('UA-34271106-1');

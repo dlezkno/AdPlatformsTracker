@@ -1,9 +1,21 @@
 var ReportsAndAnalytics={
 	
 	a_ra:{},
+	a_counter:0,
 	
 	init:function(){
 		//Constructor
+	},
+	loadAppMeasurement:function($appM,$vApi){
+		DomUtils.loadScript($appM,ReportsAndAnalytics.appMeasurementLoaded);
+		DomUtils.loadScript($vApi,ReportsAndAnalytics.appMeasurementLoaded);
+	},
+	appMeasurementLoaed:function(){
+		if(ReportsAndAnalytics.a_counter<2){
+			ReportsAndAnalytics.a_counter++;
+		}else{
+			EventBus.dispatchEvent();
+		}
 	},
 	getReportsAndAnalyticsObject:function($scode,$pageName,$server,$channel,
   	$pageType,$reportsuiteid,$props,$evars,$events,$products,$purchaseId,
