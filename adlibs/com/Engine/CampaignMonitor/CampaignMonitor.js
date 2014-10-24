@@ -14,7 +14,7 @@ var CampaignMonitor={
 		EventBus.addEventListener(AdPlatformsController.LIBRARIES_LOADED_EVENT,CampaignMonitor.checkCookie);
 	},
 	setCampaignVariable:function(){
-		CampaignMonitor.a_campaign_var=Config.a_ck_name;
+		CampaignMonitor.a_campaign_var=$name;
 	},
 	createCookie:function($cname, $cvalue, $exdays){
 		var d = new Date();
@@ -92,7 +92,7 @@ var CampaignMonitor={
 		var $param=campaigns[campaigns.length-1].cmpid;
 		var campana='';
 		var medio='';
-		var tipoAnuncio='';
+		var tipoanuncio='';
 		var modalidad='';
 		var tracking_code=$param.split('');
 		var _counter=0;
@@ -120,22 +120,49 @@ var CampaignMonitor={
 				var response={ 
 					tracking_code:tracking_code.join(''), 
 					medio:medio, 
-					modalidad:tipoanuncio, 
 					detalle_medio:modalidad,
-					descripcion:''
+					descripcion:CampaignMonitor.getHistoryString(JSON.parse(CampaignMonitor.getCookie(Config.a_ck_name)).campaigns)
 				}; 
 			}else{ 
 				var response={ 
 					tracking_code:'Organic', 
 					medio:'Organic', 
-					modalidad:'Organic', 
 					detalle_medio:'Organic',
-					descripcion:''
+					descripcion:CampaignMonitor.getHistoryString(JSON.parse(CampaignMonitor.getCookie(Config.a_ck_name)).campaigns)
 				}; 
 			} 
 			
 			return response;
 			
+	},
+	getHistoryString:function($cs){
+		var hs=[];
+		var cmpid='';
+		var _counter=0;
+		var medio='';
+		var modalidad='';
+		for(var i=0;i<$cs.length;i++){
+			for(var j=0;j<String($cs[i].cmpid).length;j++){
+				
+				if(String($cs[i].cmpid)[j]=='_'){ 
+					_counter++; 
+				}else{ 
+					if(_counter>=1 && _counter<2){ 
+						medio+=String($cs[i].cmpid)[j];
+					} 
+					if(_counter>=2 && _counter<3){ 
+						modalidad+=String($cs[i].cmpid)[j]; 
+					} 
+				} 
+			}
+			
+			hs.push(medio+'_'+modalidad+','+$cs[i].date);
+			_counter=0;
+			medio='';
+			modalidad='';
+		}
+		
+		return String(hs);
 	},
 	deleteCookie:function(){
 		CampaignMonitor.createCookie(Config.a_ck_name,'',-1);
